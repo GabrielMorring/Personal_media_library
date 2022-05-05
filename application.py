@@ -1,4 +1,6 @@
+from cgi import print_arguments
 from heapq import merge
+from unittest import result
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -15,27 +17,42 @@ def add_data(db):
 
     title = input('\nEnter the title of the thing you want to add: ')
     creator = input('\nEnter the name of the person who made this (NA if so desired): ')
-    rating = input('\nEnter your rating of this between 1 and 10: ')
+    rating = int(input('\nEnter your rating of this between 1 and 10: '))
     description = input('\nAdd a description (NA if so desired): ')
 
     data = {
         'title': f'{title}',
         'creator': f'{creator}',
-        'rating': f'{rating}',
+        'rating': rating,
         'description': f'{description}'
     }
 
     db.collection('Library').document(f'{title}').set(data)
 
-def remove_data():
+def remove_data(db):
     pass
 
-def modify_data():
+def modify_data(db):
     pass
 
-def view_data():
-    pass
+def view_data(db):
 
+    print()
+    docs = db.collection('Library').get()
+    num = 0
+
+    for doc in docs:
+        num += 1
+        docu = doc.to_dict()
+        title = docu.get('title')
+
+        print(f'{num}: {title}')
+
+    choice = int(input('\nChoose the number of the thing you want to see: '))
+
+    print()
+    print(docs[choice - 1].to_dict())
+    print()
 
 
 
@@ -69,11 +86,30 @@ def main():
         else:
             print('\n Goodbye')
 
-        
+
+    
+    
 
 
 if __name__ == '__main__':
     main()
+
+
+# get document with known ID
+# result = db.collection('Library').document('yes').get()
+# if result.exists:
+#     print(result.to_dict())
+
+# get all documents in a collection
+# docs = db.collection('Library').get()
+#     for doc in docs:
+#         print(doc.to_dict())
+
+# querying
+# docs = db.collection('Library').where('rating', '==', 5).get()
+#     for doc in docs:
+#         print(doc.to_dict())
+
 
 # add document with Auto Id
 # data = {
