@@ -12,15 +12,20 @@
 
 # Cloud Database
 
-{Describe the cloud database you are using.}
+I am using google firestore. It is a noSQL database.
 
-{Describe the structure of the database that you created.}
+Google firestore works by having collections that hold documents in the collections and each document is basically json data. 
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+The tools I used for this project are
 
-{Describe the programming language that you used and any libraries.}
+* Visual Studio Code
+* Python
+* Google firebase
+* Git and Github
+
+I used the firebase librarie with python to connect to the cloud database
 
 # Useful Websites
 
