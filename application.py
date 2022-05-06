@@ -30,13 +30,42 @@ def add_data(db):
     db.collection('Library').document(f'{title}').set(data)
 
 def remove_data(db):
-    pass
+    
+    display_docs(db)
+    
+    doc = get_doc(db)
+
+    title = doc['title']
+    
+    db.collection('Library').document(f'{title}').delete()
+
 
 def modify_data(db):
-    pass
+    
+    display_docs(db)
+
+    doc = get_doc(db)
+
+    title = doc['title']
+
+    db.collection('Library').document(f'{title}')
 
 def view_data(db):
 
+    display_docs(db)
+
+    thing = get_doc(db)
+    
+    print()
+    for key in thing:
+        print(f'{key} : {thing[key]}')
+    
+    pause = input('\nPress any key to continue: ')
+
+
+
+def display_docs(db):
+    
     print()
     docs = db.collection('Library').get()
     num = 0
@@ -48,11 +77,18 @@ def view_data(db):
 
         print(f'{num}: {title}')
 
-    choice = int(input('\nChoose the number of the thing you want to see: '))
+def get_doc(db):
+    
+    choice = int(input('\nChoose the number of the thing you want to select: '))
 
-    print()
-    print(docs[choice - 1].to_dict())
-    print()
+    docs = db.collection('Library').get()
+
+    thing = docs[choice - 1].to_dict()
+
+    return thing
+
+    
+
 
 
 
@@ -94,6 +130,13 @@ def main():
 if __name__ == '__main__':
     main()
 
+
+# delete data Known ID - field
+# 
+
+
+# delete data Known ID
+# db.collection('Library').document('yes').delete()
 
 # get document with known ID
 # result = db.collection('Library').document('yes').get()
