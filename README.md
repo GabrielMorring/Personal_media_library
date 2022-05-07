@@ -1,14 +1,10 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+I made a program just to store information on what I (or anyone who uses it) like and don't like. It just stores the name of a thing a rating that you give it between one and ten, and a description of that thing.
 
-{Provide a description the software that you wrote and how it integrates with a Cloud Database.  Describe how to use your program.}
+I just made this program for fun and to learn a bit more about how to use a cloud database if I want to use one again.
 
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of the cloud database.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/wJ3c6A24rzc)
 
 # Cloud Database
 
@@ -25,17 +21,15 @@ The tools I used for this project are
 * Google firebase
 * Git and Github
 
-I used the firebase librarie with python to connect to the cloud database
+I used the firebase library with python to connect to the cloud database
 
 # Useful Websites
 
 
-* [Youtube Tutorial](https://www.youtube.com/watch?v=UVzBQ0LkO28&t=2s)
-* [Web Site Name](http://url.link.goes.here)
+* [Youtube Tutorials that I found helpful](https://www.youtube.com/watch?v=Hh4IAwcZBLM&list=PLs3IFJPw3G9LW-rGJ8EBMaCd8OxGm_qQe)
+* [google documentation](https://firebase.google.com/docs/firestore)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* fix bugs
+* make user errors not doable

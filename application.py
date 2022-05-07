@@ -6,7 +6,6 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 
-
 # conects to firestore database
 def connect_firestore():
     cred = credentials.Certificate("serviceAccountKey.json")
@@ -43,7 +42,6 @@ def remove_data(db):
     
     db.collection('Library').document(f'{title}').delete()
 
-
 # can modify data already in the database
 def modify_data(db):
     
@@ -70,7 +68,6 @@ def modify_data(db):
     data = {f'{field}': f'{value}'}
 
     db.collection('Library').document(f'{title}').update(data)
-    
 
 # allow you to view the data in the database
 def view_data(db):
@@ -84,8 +81,6 @@ def view_data(db):
         print(f'{key} : {doc[key]}')
     
     pause = input('\nPress any key to continue: ')
-
-
 
 # displays all the documents in a collection 
 def display_docs(db):
@@ -111,13 +106,6 @@ def get_doc(db):
     thing = docs[choice - 1].to_dict()
 
     return thing
-
-    
-
-
-
-
-
 
 def main():
     db = connect_firestore()
@@ -147,9 +135,6 @@ def main():
             print('\nInvalid Input!')
         else:
             print('\n Goodbye')
-
-
-    
 
 
 if __name__ == '__main__':
