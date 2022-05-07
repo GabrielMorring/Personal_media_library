@@ -6,6 +6,8 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 
+
+# conects to firestore database
 def connect_firestore():
     cred = credentials.Certificate("serviceAccountKey.json")
     firebase = firebase_admin.initialize_app(cred)
@@ -13,6 +15,7 @@ def connect_firestore():
     db = firestore.client()
     return db
 
+# adds data to firestore database
 def add_data(db):
 
     title = input('\nEnter the title of the thing you want to add: ')
@@ -29,6 +32,7 @@ def add_data(db):
 
     db.collection('Library').document(f'{title}').set(data)
 
+# removes data from database
 def remove_data(db):
     
     display_docs(db)
@@ -40,6 +44,7 @@ def remove_data(db):
     db.collection('Library').document(f'{title}').delete()
 
 
+# can modify data already in the database
 def modify_data(db):
     
     display_docs(db)
@@ -67,6 +72,7 @@ def modify_data(db):
     db.collection('Library').document(f'{title}').update(data)
     
 
+# allow you to view the data in the database
 def view_data(db):
 
     display_docs(db)
@@ -81,6 +87,7 @@ def view_data(db):
 
 
 
+# displays all the documents in a collection 
 def display_docs(db):
     
     print()
@@ -94,6 +101,7 @@ def display_docs(db):
 
         print(f'{num}: {title}')
 
+# prompts user for a number and then return the document that is at that number in a list of documents
 def get_doc(db):
     
     choice = int(input('\nChoose the number of the thing you want to select: '))
@@ -105,6 +113,7 @@ def get_doc(db):
     return thing
 
     
+
 
 
 
@@ -145,6 +154,10 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+# references on how to use firestore Library
 
 
 # update data Known key
