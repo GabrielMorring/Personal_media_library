@@ -47,18 +47,35 @@ def modify_data(db):
     doc = get_doc(db)
 
     title = doc['title']
+    num = 0
 
-    db.collection('Library').document(f'{title}')
+    print()
+    for key in doc:
+        num += 1
+        print(f'{num}. {key}')
+    
+    choice = int(input('\nEnter the number of the field you want to edit: '))
+
+    fields = list(doc.keys())
+
+    field = fields[choice - 1]
+
+    value = input('\nEnter the new value for the field: ')
+
+    data = {f'{field}': f'{value}'}
+
+    db.collection('Library').document(f'{title}').update(data)
+    
 
 def view_data(db):
 
     display_docs(db)
 
-    thing = get_doc(db)
+    doc = get_doc(db)
     
     print()
-    for key in thing:
-        print(f'{key} : {thing[key]}')
+    for key in doc:
+        print(f'{key} : {doc[key]}')
     
     pause = input('\nPress any key to continue: ')
 
@@ -73,7 +90,7 @@ def display_docs(db):
     for doc in docs:
         num += 1
         docu = doc.to_dict()
-        title = docu.get('title')
+        title = docu['title']
 
         print(f'{num}: {title}')
 
@@ -124,15 +141,15 @@ def main():
 
 
     
-    
 
 
 if __name__ == '__main__':
     main()
 
 
-# delete data Known ID - field
-# 
+# update data Known key
+# db.collection('Library').document('RV').update({'rating': 4})
+    
 
 
 # delete data Known ID
